@@ -237,6 +237,12 @@ variable "parameter_group_name" {
   description = "Override the default parameter group name"
 }
 
+variable "create_parameter_group" {
+  type = bool
+  default = false
+  description = "Create a parameter group"
+}
+
 variable "log_delivery_configuration" {
   type        = list(map(any))
   default     = []

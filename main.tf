@@ -88,8 +88,8 @@ resource "aws_elasticache_subnet_group" "default" {
   tags        = module.this.tags
 }
 
-resource "aws_elasticache_parameter_group" "this" {
-  count       = module.this.enabled ? 1 : 0
+resource "aws_elasticache_parameter_group" "default" {
+  count       = module.this.enabled && var.create_parameter_group ? 1 : 0
   name = var.parameter_group_name != null ? var.parameter_group_name : module.this.id
   description = var.parameter_group_description != null ? var.parameter_group_description : "Elasticache parameter group for ${module.this.id}"
   family      = var.family
